@@ -32,10 +32,6 @@ DEVICE_PACKAGE_OVERLAYS += \
     vendor/ninja/overlay/common \
     vendor/ninja/overlay/dictionaries
 
-# EXT4/F2FS format script
-PRODUCT_COPY_FILES += \
-    vendor/ninja/prebuilt/common/bin/format.sh:install/bin/format.sh
-
 # Custom NinjaOS packages
 PRODUCT_PACKAGES += \
     BluetoothExt \
