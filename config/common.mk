@@ -1,4 +1,4 @@
-# Copyright (C) 2017 Phenom-OS
+# Copyright (C) 2017 Ninja-OS
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,29 +13,30 @@
 # limitations under the License.
 
 # include definitions for SDCLANG
-# include vendor/phenom/sdclang/sdclang.mk
+# include vendor/ninja/sdclang/sdclang.mk
 
-PRODUCT_BRAND ?= Phenom
+PRODUCT_BRAND ?= Ninja
+ include vendor/ninja/config/version.mk
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
-    vendor/phenom/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
-    vendor/phenom/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
-    vendor/phenom/prebuilt/common/bin/50-base.sh:system/addon.d/50-base.sh \
+    vendor/ninja/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
+    vendor/ninja/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
+    vendor/ninja/prebuilt/common/bin/50-base.sh:system/addon.d/50-base.sh \
 
 # Bootanimation
 PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/media/bootanimation.zip:system/media/bootanimation.zip
+    vendor/ninja/prebuilt/common/media/bootanimation.zip:system/media/bootanimation.zip
 
 DEVICE_PACKAGE_OVERLAYS += \
-    vendor/phenom/overlay/common \
-    vendor/phenom/overlay/dictionaries
+    vendor/ninja/overlay/common \
+    vendor/ninja/overlay/dictionaries
 
 # EXT4/F2FS format script
 PRODUCT_COPY_FILES += \
-    vendor/phenom/prebuilt/common/bin/format.sh:install/bin/format.sh
+    vendor/ninja/prebuilt/common/bin/format.sh:install/bin/format.sh
 
-# Custom PHENOM packages
+# Custom NinjaOS packages
 PRODUCT_PACKAGES += \
     BluetoothExt \
     LatinIME \
@@ -76,35 +77,35 @@ PRODUCT_PACKAGES += \
 
 # Backup Services whitelist
 PRODUCT_COPY_FILES += \
-    vendor/phenom/config/permissions/backup.xml:system/etc/sysconfig/backup.xml
+    vendor/ninja/config/permissions/backup.xml:system/etc/sysconfig/backup.xml
 
 # init.d support
 PRODUCT_COPY_FILES += \
-    vendor/phenom/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner
+    vendor/ninja/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner
 
 # LatinIME gesture typing
 ifeq ($(TARGET_ARCH),arm64)
 PRODUCT_COPY_FILES += \
-    vendor/phenom/prebuilt/common/lib64/libjni_latinime.so:system/lib64/libjni_latinime.so \
-    vendor/phenom/prebuilt/common/lib64/libjni_latinimegoogle.so:system/lib64/libjni_latinimegoogle.so
+    vendor/ninja/prebuilt/common/lib64/libjni_latinime.so:system/lib64/libjni_latinime.so \
+    vendor/ninja/prebuilt/common/lib64/libjni_latinimegoogle.so:system/lib64/libjni_latinimegoogle.so
 else
 PRODUCT_COPY_FILES += \
-    vendor/phenom/prebuilt/common/lib/libjni_latinime.so:system/lib/libjni_latinime.so \
-    vendor/phenom/prebuilt/common/lib/libjni_latinimegoogle.so:system/lib/libjni_latinimegoogle.so
+    vendor/ninja/prebuilt/common/lib/libjni_latinime.so:system/lib/libjni_latinime.so \
+    vendor/ninja/prebuilt/common/lib/libjni_latinimegoogle.so:system/lib/libjni_latinimegoogle.so
 endif
 
-# PHENOM-specific init file
+# NinjOS-specific init file
 PRODUCT_COPY_FILES += \
-    vendor/phenom/prebuilt/common/etc/init.local.rc:root/init.phenom.rc
+    vendor/ninja/prebuilt/common/etc/init.local.rc:root/init.ninja.rc
 
 # Bring in camera effects
 PRODUCT_COPY_FILES +=  \
-    vendor/phenom/prebuilt/common/media/LMspeed_508.emd:system/vendor/media/LMspeed_508.emd \
-    vendor/phenom/prebuilt/common/media/PFFprec_600.emd:system/vendor/media/PFFprec_600.emd
+    vendor/ninja/prebuilt/common/media/LMspeed_508.emd:system/vendor/media/LMspeed_508.emd \
+    vendor/ninja/prebuilt/common/media/PFFprec_600.emd:system/vendor/media/PFFprec_600.emd
 
 # Copy over added mimetype supported in libcore.net.MimeUtils
 PRODUCT_COPY_FILES += \
-    vendor/phenom/prebuilt/common/lib/content-types.properties:system/lib/content-types.properties
+    vendor/ninja/prebuilt/common/lib/content-types.properties:system/lib/content-types.properties
 
 # Enable SIP+VoIP on all targets
 PRODUCT_COPY_FILES += \
